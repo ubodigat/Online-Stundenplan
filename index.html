@@ -1,165 +1,72 @@
 <!DOCTYPE html>
-<html lang="DE-de">
-
+<html lang="de" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stundenplan online</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="Bilder/books-2596809.jpg" type="image/x-icon">
-    <script src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stundenplan online</title>
+  <link rel="shortcut icon" href="Bilder/books-2596809.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <header>Online Stundenplan</header>
-    <form>
-        <table id="table">
+  <header class="app-header">
+    <div class="header-left">
+      <h1 class="title">Online Stundenplan</h1>
+      <div class="meta">
+        <label for="schuljahr">Schuljahr</label>
+        <input id="schuljahr" type="text" placeholder="25/26" maxlength="9">
+      </div>
+    </div>
+    <div class="header-right">
+      <button id="toggle-theme" class="btn ghost" aria-label="Theme umschalten">☾</button>
+      <button id="btn-print" class="btn ghost">Drucken</button>
+      <button id="btn-reset" class="btn danger">Zurücksetzen</button>
+      <button id="btn-import" class="btn">Import</button>
+      <button id="btn-export" class="btn">Export</button>
+      <button id="btn-save" class="btn primary">Speichern</button>
+      <input id="file-input" type="file" accept="application/json" hidden>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="board card">
+      <div class="board-header">
+        <div class="legend">
+          <span class="dot dot-1"></span><span>1. Std.</span>
+          <span class="dot dot-2"></span><span>2. Std.</span>
+          <span class="dot dot-3"></span><span>3. Std.</span>
+          <span class="dot dot-4"></span><span>4. Std.</span>
+          <span class="dot dot-5"></span><span>5. Std.</span>
+          <span class="dot dot-6"></span><span>6. Std.</span>
+          <span class="dot dot-7"></span><span>7. Std.</span>
+          <span class="dot dot-8"></span><span>8. Std.</span>
+          <span class="dot dot-9"></span><span>9. Std.</span>
+          <span class="dot dot-10"></span><span>10. Std.</span>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="timetable" aria-label="Stundenplan">
+          <thead>
             <tr>
-                <td style="background-color: rgb(0, 0, 0);">25/26</td>
-                <td style="background-color: rgb(94, 94, 94);">Montag</td>
-                <td style="background-color: rgb(94, 94, 94);">Dienstag</td>
-                <td style="background-color: rgb(94, 94, 94);">Mittwoch</td>
-                <td style="background-color: rgb(94, 94, 94);">Donnerstag</td>
-                <td style="background-color: rgb(94, 94, 94);">Freitag</td>
+              <th class="col-meta" id="sj-head">SJ</th>
+              <th>Montag</th>
+              <th>Dienstag</th>
+              <th>Mittwoch</th>
+              <th>Donnerstag</th>
+              <th>Freitag</th>
             </tr>
-            <tr>
-                <td style="background-color: #1c9112;">1.</td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: #1c9112;">2.</td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: #1c9112;">3.</td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: #1c9112;">4.</td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: #1c9112;">5.</td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: #1c9112;">6.</td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: #1c9112;">7.</td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: #1c9112;">8.</td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: #1c9112;">9.</td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: #1c9112;">10.</td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-                <td><input type="text" style="text-align: center;"></input>
-                </td>
-            </tr>
+          </thead>
+          <tbody id="timetable-body"></tbody>
         </table>
+      </div>
+    </section>
 
-        <button id="Sepchern">Speichern</button>
-    </form>
+    <footer class="credits">
+      <small>Hintergrundbild: <a href="https://pixabay.com/de/users/qimono-1962238/" target="_blank" rel="noopener">Arek Socha</a></small>
+    </footer>
+  </main>
 
-    <h6 id="bildbe">Bild von<a id="bildbe" href="https://pixabay.com/de/users/qimono-1962238/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3652876">Arek Socha</a></h6>
-
+  <script src="script.js"></script>
 </body>
-
 </html>
